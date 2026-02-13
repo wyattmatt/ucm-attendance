@@ -6,8 +6,8 @@ A web-based QR code attendance management system built with CodeIgniter 3 for Ci
 
 - [System Requirements](#-system-requirements)
 - [Installation](#-installation)
-- [Database Setup](#-database-setup)
-- [Configuration](#-configuration)
+- [Database Setup](#%EF%B8%8F-database-setup)
+- [Configuration](#%EF%B8%8F-configuration)
 - [Project Structure](#-project-structure)
 - [API Endpoints](#-api-endpoints)
 - [Database Schema](#-database-schema)
