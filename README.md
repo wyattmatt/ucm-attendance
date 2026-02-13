@@ -4,14 +4,14 @@ A web-based QR code attendance management system built with CodeIgniter 3 for Ci
 
 ## 📋 Table of Contents
 
-- [System Requirements](#system-requirements)
-- [Installation](#installation)
-- [Database Setup](#database-setup)
-- [Configuration](#configuration)
-- [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
-- [Database Schema](#database-schema)
-- [License](#license)
+- [System Requirements](#-system-requirements)
+- [Installation](#-installation)
+- [Database Setup](#-database-setup)
+- [Configuration](#-configuration)
+- [Project Structure](#-project-structure)
+- [API Endpoints](#-api-endpoints)
+- [Database Schema](#-database-schema)
+- [License](#-license)
 
 ## 🔧 System Requirements
 
@@ -110,8 +110,8 @@ define('ENVIRONMENT', 'production'); // development, testing, or production
 ucm-attendance/
 ├── application/
 │   ├── controllers/
-│   │   ├── Admin.php           # Admin dashboard
-│   │   ├── Attendance.php      # Attendance processing
+│   │   ├── Admin.php          # Admin dashboard
+│   │   ├── Attendance.php     # Attendance processing
 │   │   ├── Cron.php           # Automated status updates
 │   │   ├── Events.php         # Events listing
 │   │   ├── PrintCard.php      # Print participant cards
