@@ -1,0 +1,601 @@
+/* ================================================
+   UCM Attendance - User Side CSS
+   iOS 26 Liquid Glass Theme
+   ================================================ */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family:
+		"Inter",
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	min-height: 100vh;
+	overflow: hidden;
+	background-image: url(../uploads/ucm-building.png);
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/* ---- Page Wrapper ---- */
+.page-wrapper {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+}
+
+/* ---- Back Button ---- */
+.back-btn {
+	position: fixed;
+	top: 24px;
+	left: 24px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 8px 16px;
+	border-radius: 20px;
+	background: none;
+	border: none;
+	isolation: isolate;
+	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s ease;
+	z-index: 10;
+}
+
+.back-btn::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 20px;
+	box-shadow: inset 0 0 12px -4px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.back-btn::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 20px;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+.back-btn:hover {
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+	color: #fff;
+}
+
+/* ---- Glass Container (Events List) ---- */
+.glass-container {
+	border-radius: 40px;
+	position: relative;
+	isolation: isolate;
+	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
+	padding: 40px 36px 32px;
+	width: 90%;
+	max-width: 520px;
+	border: none;
+	background: none;
+}
+
+.glass-container::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 40px;
+	box-shadow: inset 0 0 20px -6px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.glass-container::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 40px;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+/* ---- Container Header ---- */
+.container-header {
+	text-align: center;
+	margin-bottom: 28px;
+}
+
+.app-title {
+	font-size: 24px;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: -0.3px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.app-subtitle {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.6);
+	margin-top: 4px;
+	font-weight: 400;
+}
+
+/* ---- Events List ---- */
+.events-list {
+	max-height: 380px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding-right: 4px;
+}
+
+/* Custom scrollbar */
+.events-list::-webkit-scrollbar {
+	width: 5px;
+}
+
+.events-list::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.events-list::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.25);
+	border-radius: 10px;
+}
+
+.events-list::-webkit-scrollbar-thumb:hover {
+	background: rgba(255, 255, 255, 0.4);
+}
+
+/* ---- Event Card ---- */
+.event-card {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px 20px;
+	margin-bottom: 10px;
+	position: relative;
+	isolation: isolate;
+	border-radius: 24px;
+	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.25s ease;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+.event-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 24px;
+	box-shadow: inset 0 0 12px -4px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.event-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 24px;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+.event-card:hover {
+	transform: translateY(-1px);
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+	color: #fff;
+}
+
+.event-card:active {
+	transform: translateY(0);
+}
+
+.event-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.event-name {
+	font-size: 15px;
+	font-weight: 600;
+	color: #fff;
+	margin-bottom: 2px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.event-date {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.55);
+	font-weight: 400;
+}
+
+.event-status {
+	flex-shrink: 0;
+}
+
+.event-arrow {
+	flex-shrink: 0;
+	color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---- Badges ---- */
+.badge {
+	font-size: 10px;
+	font-weight: 600;
+	padding: 4px 10px;
+	border-radius: 8px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.badge-upcoming {
+	background: rgba(251, 191, 36, 0.25);
+	color: #fcd34d;
+	border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.badge-ongoing {
+	background: rgba(52, 211, 153, 0.25);
+	color: #6ee7b7;
+	border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+/* ---- Empty State ---- */
+.empty-state {
+	text-align: center;
+	padding: 40px 20px;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+/* ================================================
+   Attend Page
+   ================================================ */
+
+.glass-card {
+	border-radius: 40px;
+	position: relative;
+	isolation: isolate;
+	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2);
+	padding: 48px 40px;
+	width: 90%;
+	max-width: 480px;
+	text-align: center;
+	background: none;
+	border: none;
+}
+
+.glass-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 40px;
+	box-shadow: inset 0 0 20px -6px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.glass-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 40px;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+.event-title {
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom: 8px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.event-desc {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.6);
+	margin-bottom: 24px;
+	line-height: 1.5;
+}
+
+.input-hint {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.5);
+	margin-bottom: 12px;
+}
+
+/* ---- Glass Input ---- */
+.input-group {
+	margin-bottom: 20px;
+}
+
+.glass-input {
+	width: 100%;
+	padding: 16px 24px;
+	background: rgba(255, 255, 255, 0.08);
+	border: none;
+	border-radius: 20px;
+	color: #fff;
+	font-size: 16px;
+	font-family: "Inter", sans-serif;
+	font-weight: 400;
+	outline: none;
+	transition: all 0.3s ease;
+	box-shadow:
+		0px 4px 12px rgba(0, 0, 0, 0.1),
+		inset 0 0 10px -4px #ffffff;
+}
+
+.glass-input::placeholder {
+	color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus {
+	background: rgba(255, 255, 255, 0.12);
+	box-shadow:
+		0px 4px 16px rgba(0, 0, 0, 0.15),
+		inset 0 0 12px -4px #ffffff;
+}
+
+/* ---- Glass Button ---- */
+.glass-btn {
+	display: inline-block;
+	width: 100%;
+	padding: 16px 32px;
+	position: relative;
+	isolation: isolate;
+	border-radius: 24px;
+	box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
+	color: #fff;
+	font-size: 15px;
+	font-weight: 600;
+	font-family: "Inter", sans-serif;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	text-align: center;
+	border: none;
+	background: none;
+}
+
+.glass-btn::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 24px;
+	box-shadow: inset 0 0 12px -4px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.glass-btn::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 24px;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+.glass-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+	color: #fff;
+}
+
+.glass-btn:active {
+	transform: translateY(0);
+}
+
+/* ---- Alert ---- */
+.alert {
+	padding: 12px 16px;
+	border-radius: 12px;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+
+.alert-error {
+	background: rgba(239, 68, 68, 0.2);
+	border: 1px solid rgba(239, 68, 68, 0.35);
+	color: #fca5a5;
+}
+
+/* ================================================
+   Modal Popups
+   ================================================ */
+
+.modal-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modal-glass {
+	border-radius: 32px;
+	padding: 40px 36px;
+	text-align: center;
+	max-width: 360px;
+	width: 85%;
+	position: relative;
+	isolation: isolate;
+	box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.25);
+	transform: scale(0.9);
+	transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-glass {
+	transform: scale(1);
+}
+
+.modal-glass::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	border-radius: 32px;
+	box-shadow: inset 0 0 20px -6px #ffffff;
+	background-color: rgba(255, 255, 255, 0);
+	pointer-events: none;
+}
+
+.modal-glass::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: 32px;
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	filter: url(#glass-distortion);
+	-webkit-filter: url(#glass-distortion);
+}
+
+.modal-icon {
+	margin-bottom: 16px;
+}
+
+.modal-icon.success-icon {
+	color: #6ee7b7;
+}
+
+.modal-icon.success-icon svg {
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.modal-icon.error-icon {
+	color: #fca5a5;
+}
+
+.modal-icon.error-icon svg {
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.modal-title {
+	font-size: 22px;
+	font-weight: 700;
+	color: #fff;
+	margin-bottom: 8px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.modal-event {
+	font-size: 15px;
+	color: rgba(255, 255, 255, 0.7);
+	margin-bottom: 2px;
+}
+
+.modal-session {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.55);
+	margin-bottom: 2px;
+}
+
+.modal-time {
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.45);
+}
+
+.modal-message {
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.65);
+	line-height: 1.5;
+}
+
+/* ================================================
+   Responsive
+   ================================================ */
+
+@media (max-width: 480px) {
+	.glass-container {
+		width: 95%;
+		padding: 28px 20px 24px;
+		border-radius: 32px;
+	}
+
+	.glass-container::before,
+	.glass-container::after {
+		border-radius: 32px;
+	}
+
+	.glass-card {
+		width: 95%;
+		padding: 36px 24px;
+		border-radius: 32px;
+	}
+
+	.glass-card::before,
+	.glass-card::after {
+		border-radius: 32px;
+	}
+
+	.app-title {
+		font-size: 20px;
+	}
+
+	.event-title {
+		font-size: 18px;
+	}
+
+	.events-list {
+		max-height: 340px;
+	}
+
+	.back-btn {
+		top: 16px;
+		left: 16px;
+	}
+}
