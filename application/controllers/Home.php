@@ -38,8 +38,9 @@ class Home extends CI_Controller
 		$csrf_hash = $this->security->get_csrf_hash();
 		$event_id = $this->input->post('event_id');
 		$input_value = trim($this->input->post('input_value'));
+		$input_id = explode('+', $input_value)[0];
 
-		if (!$event_id || $input_value === '' || $input_value === false) {
+		if (!$event_id || $input_id === '' || $input_id === false) {
 			$this->output->set_output(json_encode([
 				'status' => 'error',
 				'message' => 'Mohon isi kolom yang diperlukan.',
@@ -80,7 +81,7 @@ class Home extends CI_Controller
 		}
 
 		// Check duplicate per session
-		$existing = $this->Attendance_model->check_duplicate($event_id, $input_value, $session_id);
+		$existing = $this->Attendance_model->check_duplicate($event_id, $input_id, $session_id);
 		if ($existing) {
 			$this->output->set_output(json_encode([
 				'status' => 'error',
@@ -93,7 +94,7 @@ class Home extends CI_Controller
 		// Match participant by unique_code
 		$participant_id = null;
 		if ($event->has_participants) {
-			$participant = $this->Attendance_model->find_participant($event_id, $input_value);
+			$participant = $this->Attendance_model->find_participant($event_id, $input_id);
 			if (!$participant) {
 				$this->output->set_output(json_encode([
 					'status' => 'error',
@@ -109,7 +110,7 @@ class Home extends CI_Controller
 			'event_id'       => (int)$event_id,
 			'session_id'     => $session_id,
 			'participant_id' => $participant_id,
-			'input_value'    => $input_value
+			'input_value'    => $input_id
 		]);
 
 		$this->output->set_output(json_encode([
