@@ -81,7 +81,7 @@ INSERT INTO `attendances` (`id`, `event_id`, `session_id`, `participant_id`, `in
 --
 
 CREATE TABLE `events` (
-  `id` int(11) NOT NULL,
+  `id` varchar(36) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `start_date` date NOT NULL,
@@ -228,8 +228,7 @@ ALTER TABLE `attendances`
 --
 -- AUTO_INCREMENT for table `events`
 --
-ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2147483648;
+ALTER TABLE `events` MODIFY `id` varchar(36) NOT NULL;
 
 --
 -- AUTO_INCREMENT for table `event_sessions`

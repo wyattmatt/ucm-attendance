@@ -29,9 +29,13 @@ class Event_model extends CI_Model
 
 	public function create($data)
 	{
+		// Generate UUID if not provided
+		if (!isset($data['id']) || empty($data['id'])) {
+			$data['id'] = $this->generate_uuid();
+		}
 		$data['created_at'] = date('Y-m-d H:i:s');
 		$this->db->insert('events', $data);
-		return isset($data['id']) ? $data['id'] : null;
+		return $data['id'];
 	}
 
 	public function update($id, $data)
@@ -106,5 +110,21 @@ class Event_model extends CI_Model
 		$this->db->where('status !=', 'completed')
 			->where('end_date <', $today)
 			->update('events', ['status' => 'completed']);
+	}
+
+	private function generate_uuid()
+	{
+		// Generate a v4 UUID
+		return sprintf(
+			'%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0x0fff) | 0x4000,
+			mt_rand(0, 0x3fff) | 0x8000,
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff),
+			mt_rand(0, 0xffff)
+		);
 	}
 }
