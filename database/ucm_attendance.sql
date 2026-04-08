@@ -53,7 +53,7 @@ INSERT INTO `admins` (`id`, `name`, `email`, `password`, `role`, `created_at`, `
 
 CREATE TABLE `attendances` (
   `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
+  `event_id` varchar(36) NOT NULL,
   `session_id` int(11) DEFAULT NULL,
   `participant_id` int(11) DEFAULT NULL,
   `input_value` varchar(255) NOT NULL,
@@ -119,7 +119,7 @@ INSERT INTO `events` (`id`, `name`, `description`, `start_date`, `end_date`, `st
 
 CREATE TABLE `event_sessions` (
   `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
+  `event_id` varchar(36) NOT NULL,
   `session_name` varchar(255) NOT NULL,
   `session_order` int(11) NOT NULL DEFAULT 1,
   `start_time` time DEFAULT NULL,
@@ -143,7 +143,7 @@ INSERT INTO `event_sessions` (`id`, `event_id`, `session_name`, `session_order`,
 
 CREATE TABLE `participants` (
   `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
+  `event_id` varchar(36) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `unique_code` varchar(255) NOT NULL,
   `additional_info` text DEFAULT NULL,
