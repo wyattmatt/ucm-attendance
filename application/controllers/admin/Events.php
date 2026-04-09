@@ -41,9 +41,9 @@ class Events extends Admin_Controller
 			$this->form_validation->set_rules('input_label', 'Label Input', 'required|max_length[255]');
 
 			if ($this->form_validation->run()) {
-				$event_uuid = generate_uuid();
+				$event_id = generate_uuid();
 				$event_data = [
-					'id'                => $event_uuid,
+					'id'                => $event_id,
 					'name'              => $this->input->post('name'),
 					'description'       => $this->input->post('description'),
 					'start_date'        => $this->input->post('start_date'),
@@ -59,17 +59,17 @@ class Events extends Admin_Controller
 				$event_id = $this->Event_model->create($event_data);
 
 				// Handle background image upload
-				$bg = $this->_upload_background($event_uuid);
+				$bg = $this->_upload_background($event_id);
 				if ($bg) {
-					$this->Event_model->update($event_uuid, ['background_image' => $bg]);
+					$this->Event_model->update($event_id, ['background_image' => $bg]);
 				}
 
 				// Handle sessions
-				$this->_save_sessions($event_uuid);
+				$this->_save_sessions($event_id);
 
 				// Handle CSV upload
 				if ($event_data['has_participants'] && !empty($_FILES['csv_file']['name'])) {
-					$this->_process_csv($event_uuid, $event_data['input_label']);
+					$this->_process_csv($event_id, $event_data['input_label']);
 				}
 
 				$this->session->set_flashdata('success', 'Event berhasil dibuat.');
@@ -249,7 +249,7 @@ class Events extends Admin_Controller
 				}
 
 				$this->Event_model->add_participant([
-					'event_id'        => (int)$event_id,
+					'event_id'        => $event_id,
 					'name'            => $name,
 					'unique_code'     => $code,
 					'additional_info' => implode(' | ', $extra)
@@ -324,5 +324,3 @@ class Events extends Admin_Controller
 		return ['name' => $name_col, 'code' => $code_col, 'extra' => $extra];
 	}
 }
-
-

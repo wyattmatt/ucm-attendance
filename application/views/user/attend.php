@@ -82,8 +82,8 @@
 	</div>
 
 	<script>
-		var eventId = <?= (int)$event->id ?>;
-		var submitUrl = '<?= base_url('home/submit_attendance') ?>';
+		var eventId = '<?= htmlspecialchars($event->id, ENT_QUOTES, 'UTF-8') ?>';
+		var submitUrl = '<?= base_url('home/submit_attendance') ?>';	
 		var csrfName = '<?= $this->security->get_csrf_token_name() ?>';
 		var csrfHash = '<?= $this->security->get_csrf_hash() ?>';
 		var input = document.getElementById('attendInput');

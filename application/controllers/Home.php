@@ -37,7 +37,7 @@ class Home extends CI_Controller
 
 		$csrf_hash = $this->security->get_csrf_hash();
 		$event_id = $this->input->post('event_id');
-		$input_value = trim($this->input->post('input_value'));
+		$input_value = $this->input->post('input_value');
 		$input_id = explode('+', $input_value)[0];
 
 		if (!$event_id || $input_id === '' || $input_id === false) {
@@ -107,7 +107,7 @@ class Home extends CI_Controller
 		}
 
 		$this->Attendance_model->record([
-			'event_id'       => (int)$event_id,
+			'event_id'       => $event_id,
 			'session_id'     => $session_id,
 			'participant_id' => $participant_id,
 			'input_value'    => $input_id
