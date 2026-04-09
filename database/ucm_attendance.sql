@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2026 at 08:15 AM
+-- Generation Time: Apr 09, 2026 at 07:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,20 +60,6 @@ CREATE TABLE `attendances` (
   `attended_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `attendances`
---
-
-INSERT INTO `attendances` (`id`, `event_id`, `session_id`, `participant_id`, `input_value`, `attended_at`) VALUES
-(14, 11, NULL, NULL, 'db3c2eda-7e61-4318-a90f-ed1091d09aaf', '2026-04-01 10:18:47'),
-(15, 11, NULL, NULL, 'a72c3335-5d0d-4a85-925c-8e8d2bd1e37a', '2026-04-01 10:19:16'),
-(16, 11, NULL, NULL, '47b3a790-667a-4fa5-93ff-46822a379401', '2026-04-01 10:30:07'),
-(17, 11, 9, 36, '1234', '2026-04-01 10:31:42'),
-(18, 11, 9, 37, '0978', '2026-04-01 10:32:04'),
-(19, 9000, NULL, 47, '0806022410008', '2026-04-02 09:26:05'),
-(20, 9000, NULL, 46, '20240193', '2026-04-02 09:26:23'),
-(21, 9000, NULL, 41, '1234', '2026-04-02 09:28:42');
-
 -- --------------------------------------------------------
 
 --
@@ -98,19 +84,6 @@ CREATE TABLE `events` (
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `name`, `description`, `start_date`, `end_date`, `start_time`, `end_time`, `input_label`, `input_description`, `has_participants`, `background_image`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
-(11, 'Alvin\'s Birthday', '26th Happy Birthday', '2026-04-01', '2026-04-01', '10:00:00', '14:00:00', 'nim', 'Scan QR Code', 1, 'event_11_1775029867.png', 'completed', 1, '2026-04-01 08:29:11', '2026-04-02 15:15:32'),
-(61, 'Google X SpaceX', '', '2026-04-01', '2026-04-02', '16:00:00', '17:20:00', 'Kode Kehadiran', '', 0, NULL, 'completed', 1, '2026-04-01 10:17:46', '2026-04-08 14:04:31'),
-(76, 'Ari\'s Birthday', '', '2026-04-02', '2026-04-03', '17:15:00', '19:15:00', 'Kode Kehadiran', '', 0, NULL, 'completed', 1, '2026-04-01 10:14:43', '2026-04-01 10:16:43'),
-(78, 'Fajar\'s Birthday', '', '2026-03-31', '2026-04-01', '19:15:00', '20:15:00', 'Kode Kehadiran', '', 0, NULL, 'completed', 1, '2026-04-01 10:15:07', '2026-04-02 15:15:32'),
-(6689, 'Lebaran', '', '2026-04-01', '2026-04-02', '16:15:00', '16:20:00', 'Kode Kehadiran', '', 0, NULL, 'completed', 1, '2026-04-01 10:15:36', '2026-04-08 14:04:31'),
-(9000, 'testing', '', '2026-04-02', '2026-04-03', '11:16:00', '20:16:00', 'nim', '', 1, NULL, 'completed', 1, '2026-04-02 09:16:42', '2026-04-08 14:04:31'),
-(2147483647, 'Matthew\'s Birthday', '', '2026-04-06', '2026-04-07', '16:30:00', '17:15:00', 'Kode Kehadiran', '', 0, NULL, 'completed', 1, '2026-04-01 10:14:21', '2026-04-08 14:04:31');
-
 -- --------------------------------------------------------
 
 --
@@ -127,14 +100,6 @@ CREATE TABLE `event_sessions` (
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `event_sessions`
---
-
-INSERT INTO `event_sessions` (`id`, `event_id`, `session_name`, `session_order`, `start_time`, `end_time`, `created_at`) VALUES
-(9, 11, 'Sesi pagi', 1, '10:00:00', '13:00:00', '2026-04-01 16:31:21'),
-(95511, 11, 'Sesi siang', 2, '12:00:00', '14:00:00', '2026-04-01 16:31:21');
-
 -- --------------------------------------------------------
 
 --
@@ -149,24 +114,6 @@ CREATE TABLE `participants` (
   `additional_info` text DEFAULT NULL,
   `created_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `participants`
---
-
-INSERT INTO `participants` (`id`, `event_id`, `name`, `unique_code`, `additional_info`, `created_at`) VALUES
-(36, 11, 'leon', '1234', 'id: db3c2eda-7e61-4318-a90f-ed1091d09aaf | no. telp: +12 123456 | kota: new york', '2026-04-01 16:31:21'),
-(37, 11, 'philip', '0978', 'id: a72c3335-5d0d-4a85-925c-8e8d2bd1e37a | no. telp: +79 098765 | kota: las vegas', '2026-04-01 16:31:21'),
-(38, 11, 'rose', '120983', 'id: 47b3a790-667a-4fa5-93ff-46822a379401 | no. telp: +54 678345 | kota: egypt', '2026-04-01 16:31:21'),
-(39, 11, 'martin', '0802241756', 'id: d4212233-d9c9-4496-9d0e-1733c97805d9 | no. telp: 321678 | kota: northway', '2026-04-01 16:31:21'),
-(40, 11, 'krauser', '387548', 'id: 6d9524dc-50e8-45ec-9a53-daf6413d6868 | no. telp: 382753 | kota: hawai', '2026-04-01 16:31:21'),
-(41, 9000, 'leon', '1234', 'id: db3c2eda-7e61-4318-a90f-ed1091d09aaf | no. telp: +12 123456 | kota: new york', '2026-04-02 15:16:42'),
-(42, 9000, 'philip', '0978', 'id: a72c3335-5d0d-4a85-925c-8e8d2bd1e37a | no. telp: +79 098765 | kota: las vegas', '2026-04-02 15:16:42'),
-(43, 9000, 'rose', '120983', 'id: 47b3a790-667a-4fa5-93ff-46822a379401 | no. telp: +54 678345 | kota: egypt', '2026-04-02 15:16:42'),
-(44, 9000, 'martin', '0802241756', 'id: d4212233-d9c9-4496-9d0e-1733c97805d9 | no. telp: 321678 | kota: northway', '2026-04-02 15:16:42'),
-(45, 9000, 'krauser', '387548', 'id: 6d9524dc-50e8-45ec-9a53-daf6413d6868 | no. telp: 382753 | kota: hawai', '2026-04-02 15:16:42'),
-(46, 9000, 'fajar', '20240193', 'id: 5863f4c4-fb65-4402-b036-63c1a72c366f | no. telp: +54 678345 | kota: egypt', '2026-04-02 15:16:42'),
-(47, 9000, 'matthew', '0806022410008', 'id: b5d331b4-6160-44a6-855d-26f6557f8a20 | no. telp: +54 678345 | kota: egypt', '2026-04-02 15:16:42');
 
 --
 -- Indexes for dumped tables
@@ -223,24 +170,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `attendances`
 --
 ALTER TABLE `attendances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT for table `events`
---
-ALTER TABLE `events` MODIFY `id` varchar(36) NOT NULL;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `event_sessions`
 --
 ALTER TABLE `event_sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97033;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97040;
 
 --
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- Constraints for dumped tables
